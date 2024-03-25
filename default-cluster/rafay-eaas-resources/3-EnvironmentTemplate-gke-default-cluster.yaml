@@ -12,6 +12,14 @@ spec:
     name: gke-default-cluster
     resourceOptions:
       version: v1
+  variables:
+  - name: "Cluster name"
+    valueType: text
+    value: "caas-default"
+    options:
+      description: "Enter name of the cluster."
+      override:
+        type: allowed
   agents:
   - name: ak-gke-eaas-agent
   versionState: active
