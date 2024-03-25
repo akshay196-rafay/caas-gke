@@ -13,11 +13,12 @@ spec:
     resourceOptions:
       version: v1
   variables:
-  - name: "Cluster name"
+  - name: "cluster_name"
     valueType: text
     value: "caas-default"
     options:
       description: "Enter name of the cluster."
+      required: true
       override:
         type: allowed
   agents:
