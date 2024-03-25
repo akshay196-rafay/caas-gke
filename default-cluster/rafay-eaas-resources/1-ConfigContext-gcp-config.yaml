@@ -1,0 +1,15 @@
+---
+apiVersion: eaas.envmgmt.io/v1
+kind: ConfigContext
+metadata:
+  name: gcp-config
+  project: akshay
+spec:
+  envs:
+  - key: GOOGLE_APPLICATION_CREDENTIALS
+    sensitive: true
+    value: gcp-credentials.json
+  files:
+  - name: gcp-credentials.json
+    sensitive: true
+    data: <ENTER_BASE64_ENCODED_SA_CREDENTIALS_KEY_JSON_DATA>

@@ -1,0 +1,17 @@
+---
+apiVersion: eaas.envmgmt.io/v1
+kind: EnvironmentTemplate
+metadata:
+  name: gke-default-cluster
+  project: akshay
+spec:
+  version: v1
+  resources:
+  - type: dynamic
+    kind: resourcetemplate
+    name: gke-default-cluster
+    resourceOptions:
+      version: v1
+  agents:
+  - name: ak-gke-eaas-agent
+  versionState: active
