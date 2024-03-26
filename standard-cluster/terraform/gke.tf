@@ -43,6 +43,9 @@ resource "google_container_cluster" "primary" {
 
   project    =  var.project_id
 
+  release_channel  {
+    channel = "UNSPECIFIED"
+  }
   min_master_version = var.min_master_version
 }
 
