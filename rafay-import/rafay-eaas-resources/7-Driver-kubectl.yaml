@@ -1,0 +1,25 @@
+---
+apiVersion: eaas.envmgmt.io/v1
+kind: Driver
+metadata:
+  name: kubectl
+  project: akshay
+spec:
+  config:
+    type: container
+    container:
+      image: registry.dev.rafay-edge.net/oci-cli:0.16
+      envVars:
+        BOOTSTRAP_ENV: $(resource."rafay-import".output.bootstrap_data.value)$
+        KUBECONFIG_ENV: $(resource."gke-standard-cluster".output.kubeconfig.value)$
+      volumes:
+      - mountPath: /root/oke/import
+
+      # Loading files with bootstrap and kubeconfig didn't work. The
+      # YAML format of the file content is not persisted inside
+      # container. All YAML content gets converted to one
+      # line. Results in failing kubectl command.
+      #
+      # files:
+      #   "/.kube/config": 'JChyZXNvdXJjZS4iZ2tlLXN0YW5kYXJkLWNsdXN0ZXIiLm91dHB1dC5rdWJlY29uZmlnLnZhbHVlKSQ=' # $(resource."gke-standard-cluster".output.kubeconfig.value)$
+      #   bootstrap.yaml: 'JChyZXNvdXJjZS4icmFmYXktaW1wb3J0Ii5vdXRwdXQuYm9vdHN0cmFwX2RhdGEudmFsdWUpJA=='  # $(resource."rafay-import".output.bootstrap_data.value)$

@@ -1,0 +1,52 @@
+---
+apiVersion: eaas.envmgmt.io/v1
+kind: EnvironmentTemplate
+metadata:
+  name: gke-standard-cluster
+  project: akshay
+spec:
+  version: v1
+  resources:
+  - type: dynamic
+    kind: resourcetemplate
+    name: gke-standard-cluster
+    resourceOptions:
+      version: v1
+  - type: dynamic
+    kind: resourcetemplate
+    name: rafay-import
+    resourceOptions:
+      version: v1
+  - type: dynamic
+    kind: resourcetemplate
+    name: bootstrap-apply
+    resourceOptions:
+      version: v1
+    dependsOn:
+      - name: gke-standard-cluster
+      - name: rafay-import
+  variables:
+  - name: "cluster_name"
+    valueType: text
+    value: "caas-standard"
+    options:
+      description: "Enter name of the cluster."
+      required: true
+      override:
+        type: allowed
+  - name: "min_master_version"
+    valueType: text
+    value: "1.27"
+    options:
+      description: "Enter initial master k8s version."
+      required: false
+      override:
+        type: restricted
+        restrictedValues:
+        - "1.26"
+        - "1.27"
+        - "1.28"
+        - "1.29"
+  agents:
+  - name: ak-gke-eaas-agent
+  versionState: active
