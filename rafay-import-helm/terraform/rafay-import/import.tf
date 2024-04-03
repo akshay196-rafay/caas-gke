@@ -13,7 +13,7 @@ variable "project_name" {
 resource "rafay_import_cluster" "gke" {
   clustername           = var.cluster_name
   projectname           = var.project_name
-  blueprint             = "default-gke"
+  blueprint             = "minimal"
   # location              = ""
   provision_environment = "CLOUD"
   kubernetes_provider   = "GKE"
