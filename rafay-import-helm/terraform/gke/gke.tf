@@ -1,33 +1,3 @@
-variable "gke_username" {
-  default     = ""
-  description = "gke username"
-}
-
-variable "gke_password" {
-  default     = ""
-  description = "gke password"
-}
-
-variable "region" {
-  default     = "us-central1"
-  description = "name of region"
-}
-
-variable "project_id" {
-  default     = "dev-382813"
-  description = "GCP project"
-}
-
-variable "cluster_name" {
-  default     = "caas-standard"
-  description = "GCP project"
-}
-
-variable "min_master_version" {
-  default     = "1.27"
-  description = "Initial master k8s version"
-}
-
 resource "google_container_cluster" "primary" {
   name     = var.cluster_name
   location = var.region
@@ -38,12 +8,12 @@ resource "google_container_cluster" "primary" {
   remove_default_node_pool = false
   initial_node_count       = 1
 
-  network    = "default"  # google_compute_network.vpc.name
-  subnetwork = "default"  # google_compute_subnetwork.subnet.name
+  network    = "default" # google_compute_network.vpc.name
+  subnetwork = "default" # google_compute_subnetwork.subnet.name
 
-  project    =  var.project_id
+  project = var.project_id
 
-  release_channel  {
+  release_channel {
     channel = "UNSPECIFIED"
   }
   min_master_version = var.min_master_version
@@ -61,11 +31,12 @@ data "google_container_cluster" "gke_cluster" {
   name     = var.cluster_name
   location = var.region
 
-  project    =  var.project_id
+  project = var.project_id
 }
 
-# Call rafay import module
 
+
+# Call rafay import module.
 module "rafay_import" {
   # depends_on = [
   #   # GKE cluster must be created and cluster details must be fetched
@@ -74,7 +45,7 @@ module "rafay_import" {
   # ]
   source = "../rafay-import"
 
-  cluster_endpoint               = "https://${data.google_container_cluster.gke_cluster.endpoint}"
-  cluster_ca_certificate         = data.google_container_cluster.gke_cluster.master_auth[0].cluster_ca_certificate
-  cluster_access_token           = data.google_client_config.default.access_token
+  cluster_endpoint       = "https://${data.google_container_cluster.gke_cluster.endpoint}"
+  cluster_ca_certificate = data.google_container_cluster.gke_cluster.master_auth[0].cluster_ca_certificate
+  cluster_access_token   = data.google_client_config.default.access_token
 }

@@ -20,6 +20,6 @@ output "bootstrap_path" {
 }
 
 output "manifest" {
-  value = helm_release.bootstrap_apply.manifest
+  value     = helm_release.bootstrap_apply.manifest
   sensitive = true
 }

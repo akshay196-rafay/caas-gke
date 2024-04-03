@@ -1,3 +1,15 @@
+variable "cluster_name" {
+  type        = string
+  default     = "caas-import"
+  description = "Name of the Rafay cluster"
+}
+
+variable "project_name" {
+  type        = string
+  default     = "akshay"
+  description = "Rafay project name"
+}
+
 variable "cluster_endpoint" {
   type        = string
   description = "Cluster Endpoint URL"
