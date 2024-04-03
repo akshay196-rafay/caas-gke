@@ -1,6 +1,5 @@
 .terraform
 # rarfay import output files
-bootstrap.yaml
 *-values.yaml
 *.tfstate
 *.tfstate.backup
