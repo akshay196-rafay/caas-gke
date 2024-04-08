@@ -2,7 +2,7 @@
 apiVersion: eaas.envmgmt.io/v1
 kind: ResourceTemplate
 metadata:
-  name: gke-standard-cluster
+  name: rafay-import
   project: akshay
 spec:
   version: v1
@@ -13,9 +13,9 @@ spec:
   repositoryOptions:
     name: caas-gke
     branch: main
-    directoryPath: rafay-import-helm/terraform/gke
+    directoryPath: rafay-import-helm/terraform/rafay-import
   contexts:
-  - name: gcp-config
+  - name: rctl-config
   agents:
   - name: ak-gke-eaas-agent
   versionState: active

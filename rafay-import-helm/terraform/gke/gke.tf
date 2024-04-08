@@ -37,15 +37,16 @@ data "google_container_cluster" "gke_cluster" {
 
 
 # Call rafay import module.
-module "rafay_import" {
-  # depends_on = [
-  #   # GKE cluster must be created and cluster details must be fetched
-  #   # before importing cluster to Rafay controller.
-  #   data.google_container_cluster.gke_cluster,
-  # ]
-  source = "../rafay-import"
+# module "rafay_import" {
+#   # depends_on = [
+#   #   # GKE cluster must be created and cluster details must be fetched
+#   #   # before importing cluster to Rafay controller.
+#   #   data.google_container_cluster.gke_cluster,
+#   # ]
+#   source = "../rafay-import"
 
-  cluster_endpoint       = "https://${data.google_container_cluster.gke_cluster.endpoint}"
-  cluster_ca_certificate = data.google_container_cluster.gke_cluster.master_auth[0].cluster_ca_certificate
-  cluster_access_token   = data.google_client_config.default.access_token
-}
+#   cluster_name           = var.cluster_name
+#   cluster_endpoint       = "https://${data.google_container_cluster.gke_cluster.endpoint}"
+#   cluster_ca_certificate = data.google_container_cluster.gke_cluster.master_auth[0].cluster_ca_certificate
+#   cluster_access_token   = data.google_client_config.default.access_token
+# }

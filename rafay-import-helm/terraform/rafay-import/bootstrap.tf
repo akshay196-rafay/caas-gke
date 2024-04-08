@@ -12,22 +12,16 @@ provider "helm" {
   }
 }
 
-locals {
-  depends_on = [
-    rafay_import_cluster.gke,
-  ]
-  bs_data = resource.rafay_import_cluster.gke.bootstrap_data
-}
-
 resource "helm_release" "bootstrap_apply" {
   depends_on = [
     rafay_import_cluster.gke,
   ]
-  name       = "bootstrap-rel"
-  repository = "../../helm-charts"
-  chart      = "bootstrap"
 
-  values = [
-    "yaml: |\n%{for line in split("\n", local.bs_data)}  ${line}\n%{endfor}",
-  ]
+  name             = "v2-infra"
+  namespace        = "rafay-system"
+  create_namespace = true
+  repository       = "https://rafaysystems.github.io/rafay-helm-charts/"
+  chart            = "v2-infra"
+  values           = [rafay_import_cluster.gke.values_data]
+  version          = "1.1.2"
 }
