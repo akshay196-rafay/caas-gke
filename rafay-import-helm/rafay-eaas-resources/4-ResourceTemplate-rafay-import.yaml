@@ -14,6 +14,25 @@ spec:
     name: caas-gke
     branch: main
     directoryPath: rafay-import-helm/terraform/rafay-import
+  variables:
+    - name: cluster_endpoint
+      valueType: expression
+      value: $(resource."gke-standard-cluster".output.cluster_endpoint.value)$
+      options:
+        override:
+          type: notallowed
+    - name: cluster_ca_certificate
+      valueType: expression
+      value: $(resource."gke-standard-cluster".output.cluster_ca_certificate.value)$
+      options:
+        override:
+          type: notallowed
+    - name: cluster_access_token
+      valueType: expression
+      value: $(resource."gke-standard-cluster".output.cluster_access_token.value)$
+      options:
+        override:
+          type: notallowed
   contexts:
   - name: rctl-config
   agents:
