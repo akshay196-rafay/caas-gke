@@ -6,7 +6,7 @@ variable "cluster_name" {
 
 variable "project_name" {
   type        = string
-  default     = "akshay"
+  default     = "defaultproject"
   description = "Rafay project name"
 }
 
