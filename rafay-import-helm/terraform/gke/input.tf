@@ -201,23 +201,23 @@ variable "node_config_min_cpu_platform" {
   default     = ""
 }
 
-variable "node_config_reservation_affinity_consume_reservation_type" {
-  description = "The configuration of the desired reservation which instances could take capacity from."
-  type        = string
-  default     = null
-}
+# variable "node_config_reservation_affinity_consume_reservation_type" {
+#   description = "The configuration of the desired reservation which instances could take capacity from."
+#   type        = string
+#   default     = "NO_RESERVATION"
+# }
 
-variable "node_config_reservation_affinity_key" {
-  description = "The key for the reservation affinity."
-  type        = string
-  default     = null
-}
+# variable "node_config_reservation_affinity_key" {
+#   description = "The key for the reservation affinity."
+#   type        = string
+#   default     = null
+# }
 
-variable "node_config_reservation_affinity_values" {
-  description = "The list of possible values for the reservation affinity."
-  type        = list(string)
-  default     = []
-}
+# variable "node_config_reservation_affinity_values" {
+#   description = "The list of possible values for the reservation affinity."
+#   type        = list(string)
+#   default     = []
+# }
 
 variable "node_config_gvnic_enabled" {
   description = "Enables Google Virtual NIC (gVNIC) on the node pool."

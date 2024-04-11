@@ -101,14 +101,14 @@ resource "google_container_node_pool" "primary_nodes" {
     #   }
     # }
 
-    dynamic "reservation_affinity" {
-      for_each = var.node_config_reservation_affinity_consume_reservation_type != null ? [1] : []
-      content {
-        consume_reservation_type = var.node_config_reservation_affinity_consume_reservation_type
-        key                      = var.node_config_reservation_affinity_key
-        values                   = var.node_config_reservation_affinity_values
-      }
-    }
+    # dynamic "reservation_affinity" {
+    #   for_each = var.node_config_reservation_affinity_consume_reservation_type == "SPECIFIC_RESERVATION" ? [1] : []
+    #   content {
+    #     consume_reservation_type = var.node_config_reservation_affinity_consume_reservation_type
+    #     key                      = var.node_config_reservation_affinity_key
+    #     values                   = var.node_config_reservation_affinity_values
+    #   }
+    # }
 
     # dynamic "workload_metadata_config" {
     #   for_each = var.node_config_workload_metadata_config_mode != null ? [1] : []

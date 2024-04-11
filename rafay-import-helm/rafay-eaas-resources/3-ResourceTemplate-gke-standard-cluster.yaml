@@ -144,25 +144,25 @@ spec:
         restrictedValues:
         - 'false'
         - 'true'
-  - name: node_config_reservation_affinity_consume_reservation_type
-    valueType: text
-    value: 'NO_RESERVATION'
-    options:
-      override:
-        type: restricted
-        restrictedValues:
-        - 'NO_RESERVATION'
-        - 'ANY_RESERVATION'
-        - 'SPECIFIC_RESERVATION'
-  - name: node_config_reservation_affinity_key
-    valueType: text
-    value: 'null'
-    options:
-      override:
-        type: allowed
-  - name: node_config_reservation_affinity_values
-    valueType: hcl
-    value: "[]"
-    options:
-      override:
-        type: allowed
+  # - name: node_config_reservation_affinity_consume_reservation_type
+  #   valueType: text
+  #   value: 'NO_RESERVATION'
+  #   options:
+  #     override:
+  #       type: restricted
+  #       restrictedValues:
+  #       - 'NO_RESERVATION'
+  #       - 'ANY_RESERVATION'
+  #       - 'SPECIFIC_RESERVATION'
+  # - name: node_config_reservation_affinity_key
+  #   valueType: text
+  #   value: 'null'
+  #   options:
+  #     override:
+  #       type: allowed
+  # - name: node_config_reservation_affinity_values
+  #   valueType: hcl
+  #   value: "[]"
+  #   options:
+  #     override:
+  #       type: allowed
