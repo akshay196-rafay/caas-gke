@@ -12,6 +12,13 @@ spec:
     name: gke-standard-cluster
     resourceOptions:
       version: v1
+  - type: dynamic
+    kind: resourcetemplate
+    name: rafay-import
+    resourceOptions:
+      version: v1
+    dependsOn:
+      name: gke-standard-cluster
   variables:
   - name: "cluster_name"
     valueType: text
