@@ -17,6 +17,9 @@ resource "google_container_cluster" "primary" {
     channel = "UNSPECIFIED"
   }
   min_master_version = var.min_master_version
+
+  networking_mode   = var.networking_mode
+  ip_allocation_policy {}
 }
 
 
@@ -60,11 +63,11 @@ resource "google_container_node_pool" "primary_nodes" {
     auto_upgrade = var.management_auto_upgrade
   }
 
-  network_config {
-    create_pod_range     = var.network_config_create_pod_range
-    enable_private_nodes = var.network_config_enable_private_nodes
-    pod_ipv4_cidr_block  = var.network_config_pod_ipv4_cidr_block
-  }
+  # network_config {
+  #   create_pod_range     = var.network_config_create_pod_range
+  #   enable_private_nodes = var.network_config_enable_private_nodes
+  #   pod_ipv4_cidr_block  = var.network_config_pod_ipv4_cidr_block
+  # }
 
   node_config {
     machine_type = var.node_config_machine_type

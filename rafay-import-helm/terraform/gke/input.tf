@@ -24,9 +24,8 @@ variable "min_master_version" {
 variable "node_pool_name" {
   description = "The name of the node pool."
   type        = string
-  default     = "tiny-pool"
+  default     = "default-nodepool"
 }
-
 
 variable "node_version" {
   description = "The Kubernetes version of the nodes."
@@ -82,6 +81,12 @@ variable "confidential_nodes_enabled" {
 #   default     = 0
 # }
 
+variable "networking_mode" {
+  description = "Determines whether alias IPs or routes will be used for pod IPs in the cluster."
+  type        = string
+  default     = "VPC_NATIVE"
+}
+
 variable "management_auto_repair" {
   description = "Whether the nodes will be automatically repaired."
   type        = bool
@@ -109,7 +114,7 @@ variable "network_config_enable_private_nodes" {
 variable "network_config_create_pod_range" {
   description = "Whether to create a new range for pod IPs in this node pool."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "network_config_pod_ipv4_cidr_block" {

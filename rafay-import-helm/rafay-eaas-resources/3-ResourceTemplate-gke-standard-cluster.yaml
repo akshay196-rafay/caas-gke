@@ -19,3 +19,150 @@ spec:
   agents:
   - name: ak-gke-eaas-agent
   versionState: active
+  variables:
+  - name: node_pool_name
+    valueType: text
+    value: default-nodepool
+    options:
+      required: true
+      override:
+        type: allowed
+  - name: node_count
+    valueType: text
+    value: '2'
+    options:
+      required: true
+      override:
+        type: allowed
+  - name: node_version
+    valueType: text
+    value: '1.27'
+    options:
+      required: true
+      override:
+        type: restricted
+        restrictedValues:
+        - "1.26"
+        - "1.27"
+        - "1.28"
+        - "1.29"
+  - name: max_pods_per_node
+    valueType: text
+    value: '110'
+    options:
+      override:
+        type: allowed
+  - name: management_auto_upgrade
+    valueType: text
+    value: 'false'
+    options:
+      override:
+        type: restricted
+        restrictedValues:
+        - 'true'
+        - 'false'
+  - name: node_config_machine_type
+    valueType: text
+    value: e2-standard-4
+    options:
+      required: true
+      override:
+        type: restricted
+        restrictedValues:
+        - e2-standard-4
+        - e2-medium
+  - name: node_config_image_type
+    valueType: text
+    value: COS_CONTAINERD
+    options:
+      required: true
+      override:
+        type: restricted
+        restrictedValues:
+        - COS_CONTAINERD
+        - UBUNTU_CONTAINERD
+  - name: node_config_disk_type
+    valueType: text
+    value: pd-standard
+    options:
+      required: true
+      override:
+        type: restricted
+        restrictedValues:
+        - pd-standard
+        - pd-balanced
+        - pd-ssd
+  - name: node_config_disk_size_gb
+    valueType: text
+    value: '100'
+    options:
+      required: true
+      override:
+        type: allowed
+  - name: node_config_local_ssd_count
+    valueType: text
+    value: '0'
+    options:
+      override:
+        type: allowed
+  - name: autoscaling_min_node_count
+    valueType: text
+    value: '0'
+    options:
+      override:
+        type: allowed
+  - name: autoscaling_max_node_count
+    valueType: text
+    value: '2'
+    options:
+      override:
+        type: allowed
+  # - name: network_config_enable_private_nodes
+  #   valueType: text
+  #   value: 'false'
+  #   options:
+  #     override:
+  #       type: allowed
+  # - name: network_config_create_pod_range
+  #   valueType: text
+  #   value: 'true'
+  #   options:
+  #     override:
+  #       type: allowed
+  # - name: network_config_pod_ipv4_cidr_block
+  #   valueType: text
+  #   value: 10.104.0.0/14
+  #   options:
+  #     override:
+  #       type: allowed
+  - name: node_config_gcfs_enabled
+    valueType: hcl
+    value: 'false'
+    options:
+      override:
+        type: restricted
+        restrictedValues:
+        - 'false'
+        - 'true'
+  - name: node_config_reservation_affinity_consume_reservation_type
+    valueType: text
+    value: 'NO_RESERVATION'
+    options:
+      override:
+        type: restricted
+        restrictedValues:
+        - 'NO_RESERVATION'
+        - 'ANY_RESERVATION'
+        - 'SPECIFIC_RESERVATION'
+  - name: node_config_reservation_affinity_key
+    valueType: text
+    value: 'null'
+    options:
+      override:
+        type: allowed
+  - name: node_config_reservation_affinity_values
+    valueType: hcl
+    value: "[]"
+    options:
+      override:
+        type: allowed
