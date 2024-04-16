@@ -1,26 +1,21 @@
+variable "region" {
+  default     = "us-central1"
+  description = "name of region"
+}
+
+variable "project_id" {
+  default     = "dev-382813"
+  description = "GCP project"
+}
+
 variable "cluster_name" {
   type        = string
-  default     = "caas-import"
-  description = "Name of the Rafay cluster"
+  default     = "caas-standard"
+  description = "Name of the cluster"
 }
 
 variable "project_name" {
   type        = string
   default     = "defaultproject"
   description = "Rafay project name"
-}
-
-variable "cluster_endpoint" {
-  type        = string
-  description = "Cluster Endpoint URL"
-}
-
-variable "cluster_ca_certificate" {
-  type        = string
-  description = "Cluster CA Certificate"
-}
-
-variable "cluster_access_token" {
-  type        = string
-  description = "Cluster access token"
 }
