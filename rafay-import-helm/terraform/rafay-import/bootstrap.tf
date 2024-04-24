@@ -25,14 +25,12 @@ resource "helm_release" "bootstrap_apply" {
   values           = [rafay_import_cluster.gke.values_data]
   version          = "1.1.2"
 
-  # lifecycle {
-  #   ignore_changes = [
-  #     # skip any day2 apply
-  #     manifest,
-  #     # though the version is 1.1.2, but changing to v1.0 to 1.1.2 on
-  #     # every terraform apply
-  #     version,
-  #   ]
-  #   ignore_changes = all
-  # }
+  lifecycle {
+    ignore_changes = [
+      values,
+      # though the version is 1.1.2, but changing to v1.0 to 1.1.2 on
+      # every terraform apply
+      version,
+    ]
+  }
 }
