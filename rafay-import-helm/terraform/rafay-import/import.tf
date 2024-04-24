@@ -5,11 +5,12 @@ resource "rafay_import_cluster" "gke" {
   # location              = ""
   provision_environment = "CLOUD"
   kubernetes_provider   = "GKE"
+  values_path           = "values.yaml"
 
   lifecycle {
     ignore_changes = [
       bootstrap_path,
-      values_path,
+      # values_path,
     ]
   }
 }

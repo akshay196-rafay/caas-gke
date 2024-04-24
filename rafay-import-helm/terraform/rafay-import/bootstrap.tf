@@ -28,8 +28,7 @@ resource "helm_release" "bootstrap_apply" {
   lifecycle {
     ignore_changes = [
       values,
-      # though the version is 1.1.2, but changing to v1.0 to 1.1.2 on
-      # every terraform apply
+      # though the version is 1.1.2, helm chart version is showing v1.0
       version,
     ]
   }
